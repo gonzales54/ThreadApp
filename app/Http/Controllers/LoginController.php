@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\User;
  
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $user = App\User::create([
+        $user = User::create([
             'name' => 'test',
             'email'=>'test@test.com',
             'password'=>bcrypt('test')
