@@ -11,11 +11,6 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $user = User::create([
-            'name' => 'test',
-            'email'=>'test@test.com',
-            'password'=>bcrypt('test')
-       ]);
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
