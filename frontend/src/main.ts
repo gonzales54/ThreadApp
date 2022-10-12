@@ -12,7 +12,8 @@ import Echo from 'laravel-echo'
     broadcaster: 'pusher',
     key: process.env.VUE_APP_PUSHER_APP_KEY,
     cluster: process.env.VUE_APP_PUSHER_APP_CLUSTER,
-    forceTLS: true
+    forceTLS: true,
+    disableStats: true
 });
 
 const app = createApp(App);
