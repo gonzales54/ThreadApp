@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Thread;
+use App\Comment;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -14,28 +16,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        $tags = Tag::all();
+        return response()->json(['tags' => $tags]);
     }
 
     /**
@@ -44,42 +26,14 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(Tag $tag, $id)
     {
-        //
-    }
+        $tag = Tag::find($id);
+        $threads = Thread::where('tag_id', $id)->get();
+        for($i = 0; $i < $threads->count(); $i++) {
+            $threads[$i]['comments'] = Comment::where('thread_id', $threads[$i]['id'])->get();
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tag $tag)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Tag $tag)
-    {
-        //
+        return response()->json(['threads' => $threads, 'tag' => $tag]);
     }
 }

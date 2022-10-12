@@ -13,6 +13,7 @@
         "laravel/framework": "^6.20.26",
         "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
+        "pusher/pusher-php-server": "^2.1",
         "symfony/polyfill-ctype": "1.22.0",
         "symfony/polyfill-iconv": "1.22.0",
         "symfony/polyfill-mbstring": "1.22.0"
@@ -27,7 +28,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true
+        }
     },
     "extra": {
         "laravel": {
