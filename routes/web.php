@@ -13,4 +13,12 @@
 
 Route::get('/{any}', function () {
     return view('spa.app');
-})->where('any', '.*');
+});
+
+Route::get('/tasks', function () {
+	
+    $task = ['id' => 1, 'name' => 'メールの確認']; 
+
+    event(new TaskAdded($task));
+    
+});
