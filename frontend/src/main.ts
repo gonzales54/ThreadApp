@@ -10,8 +10,8 @@ import Echo from 'laravel-echo'
 
 (window as any).Echo = new Echo({
     broadcaster: 'pusher',
-    key: 'f942672eba3c8745418f',
-    cluster: 'ap3',
+    key: process.env.VUE_APP_PUSHER_APP_KEY,
+    cluster: process.env.VUE_APP_PUSHER_APP_CLUSTER,
     forceTLS: true,
     disableStats: true
 });
