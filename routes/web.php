@@ -14,3 +14,4 @@
 Route::get('/{any}', function () {
     return view('spa.app');
 })->where('any', '.*');
+
