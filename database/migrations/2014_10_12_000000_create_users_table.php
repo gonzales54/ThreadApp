@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('profile_picture')->default('/storage/images/profile.png');
+            $table->string('background_picture')->default('/storage/images/background.jpg');
+            $table->string('introduction')->nullable()->default('Hello World');
             $table->timestamps();
         });
     }

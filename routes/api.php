@@ -13,9 +13,20 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => 'auth:sanctum'], function() { 
+    Route::get('/user', 'UserController@show');
+    Route::post('/userupdate/{id}', 'UserController@update');
+    Route::post('/logout', 'LoginController@logout'); 
+    Route::post('/threads/{id}', 'CommentController@store');
+    Route::post('/create_thread', 'ThreadController@store');
+    Route::delete('/delete/{id}', 'ThreadController@destroy');
 });
- 
+
 Route::post('/login', 'LoginController@login');
-Route::post('/logout', 'LoginController@logout');
+Route::post('/register', 'UserController@store');
+Route::get('/threads', 'ThreadController@index');  
+Route::get('/threads/{id}', 'ThreadController@show');
+
+Route::get('/tags', 'TagController@index');
+Route::get('/tag_threads/{id}', 'TagController@show');
+Route::get('/comments/{id}', 'CommentController@index');
