@@ -1,5 +1,11 @@
 <template>
-    <template v-if="this.$route.name.match(/home|popular|tag|recent|userdetail/)">
+    <template v-if="this.$route.name.match(/home/)">
+        <li>
+            <h4 :class="(comments as Comment).user_style">{{ (comments as Comment).index }} <span class="text-success">{{ (comments as Comment).user_name }} </span> <DisplayTimeAtomVue class="d-inline-block" :time="(comments as Comment).created_at"></DisplayTimeAtomVue></h4>
+            <p :class="(comments as Comment).comment_style">{{ (comments as Comment).comment }}</p>
+        </li>
+    </template>
+    <template v-else-if="this.$route.name.match(/popular|tag|recent|userdetail/)">
         <li>
             <h4 :class="(comments as Comment).user_style"><span class="text-success">{{ (comments as Comment).user_name }} </span> <DisplayTimeAtomVue class="d-inline-block" :time="(comments as Comment).created_at"></DisplayTimeAtomVue></h4>
             <p :class="(comments as Comment).comment_style">{{ (comments as Comment).comment }}</p>
