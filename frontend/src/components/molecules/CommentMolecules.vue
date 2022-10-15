@@ -1,13 +1,13 @@
 <template>
     <template v-if="this.$route.name.match(/home|popular|tag|recent|userdetail/)">
         <li>
-        (comments as Comment).index
             <h4 :class="(comments as Comment).user_style">{{ (comments as Comment).index }} <span class="text-success">{{ (comments as Comment).user_name }} </span> <DisplayTimeAtomVue class="d-inline-block" :time="(comments as Comment).created_at"></DisplayTimeAtomVue></h4>
             <p :class="(comments as Comment).comment_style">{{ (comments as Comment).comment }}</p>
         </li>
     </template>
     <template v-else>
         <li>
+            {{ (comments as Comment).index }} 
             <h4 :class="(comments as Comment).user_style">{{ (comments as Comment).index }} <p class="mx-2 d-inline-block" v-if="$route.name === 'thread_detail'"><UserProfileImageVue :profileImage="{src: (comments as Comment).src, width: (comments as Comment).width, height: (comments as Comment).height}"></UserProfileImageVue></p> <span class="text-success">{{ (comments as Comment).user_name }} </span> <DisplayTimeAtomVue class="d-inline-block" :time="(comments as Comment).created_at"></DisplayTimeAtomVue></h4>
             <p :class="[(comments as Comment).comment_style, Boolean(parseInt((comments as any).bold)) === true ? 'bold-text' : '', Boolean(parseInt((comments as any).italic)) === true ? 'italic-text' : '', Boolean(parseInt((comments as any).underline)) === true ? 'underline-text': '']">{{ (comments as Comment).comment }}</p>
         </li>        
