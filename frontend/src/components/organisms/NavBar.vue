@@ -66,6 +66,7 @@ export default defineComponent({
         const logout = () => {
           store.dispatch('logout')
           router.go(0);
+          alert('ログアウトしました');
         }
 
         onMounted((): void => {
