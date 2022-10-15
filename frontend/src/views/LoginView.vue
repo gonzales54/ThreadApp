@@ -86,6 +86,7 @@ export default defineComponent({
                         if(res.data.status_code === 200) {
                             router.push('/')
                             await store.dispatch('getUser')
+                            alert('ログインしました。');
                         } else {
                             getUserMessage.value = 'ログインに失敗しました。'
                         }
