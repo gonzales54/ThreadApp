@@ -1,6 +1,7 @@
 <template>
     <template v-if="this.$route.name.match(/home|popular|tag|recent|userdetail/)">
         <li>
+        (comments as Comment).index
             <h4 :class="(comments as Comment).user_style">{{ (comments as Comment).index }} <span class="text-success">{{ (comments as Comment).user_name }} </span> <DisplayTimeAtomVue class="d-inline-block" :time="(comments as Comment).created_at"></DisplayTimeAtomVue></h4>
             <p :class="(comments as Comment).comment_style">{{ (comments as Comment).comment }}</p>
         </li>
@@ -44,7 +45,7 @@ export default defineComponent({
         comments: {
             type: Object as () => Comment
         }
-    },
+    }
 });
 </script>
 

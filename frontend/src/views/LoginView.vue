@@ -88,12 +88,12 @@ export default defineComponent({
                             await store.dispatch('getUser')
                             alert('ログインしました。');
                         } else {
-                            getUserMessage.value = 'ログインに失敗しました。'
+                            alert('ログインに失敗しました。');
                         }
                     })
                     .catch((err) => {
                         console.log(err);
-                        getUserMessage.value = 'ログインに失敗しました。'
+                            alert('ログインに失敗しました。');
                     })
                 })
         }
