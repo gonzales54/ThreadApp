@@ -66,7 +66,7 @@ class ThreadController extends Controller
 
             event(new ThreadAdded($thread));
             
-            return response()->json(['thread' => $thread, 'msg' => 'スレッドを作成しました。']);            
+            return response()->json(['thread' => $thread, 'msg' => 'スレッドを作成しました。', 'status_code' => 200]);            
         } else {
             return response()->json(['message' => 'ログインしてください。', 401]);
         }

@@ -158,6 +158,11 @@ export default createStore({
         thread_description: description,
         tag: tag
       })
+      .then((res : any) => {
+        if(res.data.status_code === 200) {
+          alert('スレッドを作成しました');
+        }
+      });
     },
     async createComment({commit}, {id: id, index: index, thread_title: thread_title, user_id: user_id, user_name: user_name, comment: comment, src: src, bold: bold, italic: italic, underline:underline}){
       await axios.post('/api/threads/' + id, {

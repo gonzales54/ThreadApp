@@ -167,6 +167,7 @@ export default defineComponent({
             (window as any).Echo.channel('delete-channel')
             .listen('ThreadDeleted', () => {
                 store.dispatch('getThreads')
+                alert('スレッドを削除しました');
             });
         });
 
