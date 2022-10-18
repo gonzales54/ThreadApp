@@ -68,13 +68,13 @@ class UserController extends Controller
         if($request->profile !== null) {
             $profileImage = $request->profile;
             $profilePath = $profileImage->storeAs('public/images', $profileImage->getClientOriginalName());
-            $user->profile_picture = '/storage/images/'.$profileImage->getClientOriginalName();
+            $user->profile_picture = '/app/storage/app/images/'.$profileImage->getClientOriginalName();
         }
 
         if($request->background !== null) {
             $backgroundImage = $request->background;
             $backendPath = $backgroundImage->storeAs('public/images', $backgroundImage->getClientOriginalName());
-            $user->background_picture = '/storage/images/'.$backgroundImage->getClientOriginalName();
+            $user->background_picture = '/app/storage/app/images/'.$backgroundImage->getClientOriginalName();
         }
 
         $user->save();
