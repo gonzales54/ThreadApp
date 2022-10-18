@@ -158,7 +158,7 @@ export default defineComponent({
         onMounted((): void => {
             getMobile();
             window.addEventListener('resize', getMobile);
-            store.dispatch('getThreads')
+            store.dispatch('getThreads');
             store.dispatch('getUser');
             (window as any).Echo.channel('thread-channel')
                 .listen('ThreadAdded', () => {
